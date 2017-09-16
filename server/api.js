@@ -5,13 +5,29 @@ var User = mongoose.model('User');
 
 router.route('/user')
     // Create new user
-    .post(function(req,res) {
-        console.log(req.body);
+    .post(function(req, res) {
         var user = new User(req.body);
-        user.save(function (error) {
-            if (error) response.send(error);
+        user.save(function (err) {
+            if (err) response.send(err);
             return res.json({User: user});
         });
-    }) 
+    }); 
+
+router.route('/user/:id')
+    // Update existing user
+    .put(function(req, res) {
+        User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+            if (err) response.send(err);
+            return res.json({User: user});
+        });
+    }); 
+
+router.route('/login')
+    .post(function(req, res) {
+        User.findOne({"email": req.body.email, "password": req.body.password}, function(err, user) {
+            if (err) response.send(err);
+            return res.json({User: user});
+        })
+    })
 
 module.exports = router;
