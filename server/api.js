@@ -73,7 +73,19 @@ router.route('/user/:id/nutrition')
     .put(function(req, res) {
         User.findById(req.params.id, function(err, user) {
             if (err) response.send(err);
-            // Use the Harris-Benedict equation to calculate user's BMR and caloric req
+            
+
+            // Use the Harris-Benedict equation to calculate user's BMR and caloric requirement
+            if (user.gender === "male") {
+                user.totalCalories = ( (10 * req.weight) + (6.25 * user.height) - (5 * user.age) + 5 ) * req.activity
+            } else {
+                user.totalCalories = ( (10 * req.weight) + (6.25 * user.height) - (5 * user.age) - 161 ) * req.activity
+            }
+
+            // Adjust calories based on the users goals
+            if (user.goals === "gain") user.totalCalories += 200;
+            else if (user.goals === "lose") user.totalCalories -= 200;
+
             return res.json({User: user});
         })
     })
