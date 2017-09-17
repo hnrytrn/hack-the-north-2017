@@ -27,7 +27,9 @@ import { ChatComponent } from './chat/chat.component';
     HttpModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../_services/user.service';
 import {Observable} from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,18 +10,26 @@ import {Observable} from 'rxjs/Rx';
   providers: [UserService]
 })
 export class SignInComponent implements OnInit {
-  username: String;
-  password: String;
-  constructor(userService: UserService){ 
-
-  }
+  username: string;
+  password: string;
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
+  
   ngOnInit() {
   }
 
   signIn() {
-    userService.login(this.username, this.password)
+    this.userService.login(this.username, this.password)
       .subscribe(
-        user => 
+        user => {
+          this.router.navigateByUrl('/');
+        },
+        err => {
+          console.log(err);
+        }
       )
-    }
+  }
+  
 }
