@@ -24,7 +24,9 @@ export class SignInComponent implements OnInit {
     this.userService.login(this.username, this.password)
       .subscribe(
         user => {
-          this.router.navigateByUrl('/');
+          if (user.User) {
+            this.router.navigateByUrl('/chat');
+          }
         },
         err => {
           console.log(err);

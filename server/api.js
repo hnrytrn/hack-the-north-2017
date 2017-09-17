@@ -21,7 +21,7 @@ router.route('/user')
     }); 
 
 router.route('/user/:id')
-    .get(function(res, req) {
+    .get(function(req, res) {
         User.findById(req.params.id, function(err, user) {
             if (err) response.send(err);
             return res.json({User: user});
@@ -38,7 +38,7 @@ router.route('/user/:id')
 router.route('/login')
     .post(function(req, res) {
         User.findOne({"email": req.body.email, "password": req.body.password}, function(err, user) {
-            if (err) response.send(err);
+            if (err) response.status(400).send(err);
             return res.json({User: user});
         })
     });
@@ -61,7 +61,9 @@ router.route('/meal')
                         let recipe = JSON.parse(body).hits[0].recipe;
                         //Subtract remaining calories with recipe
                         user.remainingCalories -= parseInt(recipe.calories);
-
+                        
+                        user.save();
+                        
                         res.send(recipe);
                     }
                 }

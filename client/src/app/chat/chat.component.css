@@ -159,3 +159,12 @@
 .no-msg-container {
   height: 400px;
 }
+
+iframe {
+    height: 80vh;
+    width: 100%;
+}
+
+.chat-container {
+    margin-top: 50px;
+}

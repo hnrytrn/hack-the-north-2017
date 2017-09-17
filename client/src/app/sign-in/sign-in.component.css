@@ -1,0 +1,12 @@
+.card {
+    border-radius: 5px;
+}
+
+.login-title {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.btn {
+    background-color: #3A96DD;
+}

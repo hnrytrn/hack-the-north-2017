@@ -1,3 +1,7 @@
+body, html {
+    height: 100%;
+}
+
 #header{
     height: 100%;
     width: 100%;
@@ -14,4 +18,28 @@
     display:block;
     margin:auto;
     margin-top: 5px;    
+}
+
+.background {
+    background: url('/assets/background.jpg') no-repeat center scroll; 
+    height: 100%; 
+}
+
+.landing-title {
+    text-align: center;
+    color:#3A96DD;
+    font-size: 5em;
+}
+
+.title-container {
+    margin-top: 10em;
+}
+
+.chat-title {
+    text-align: center;
+
+}
+
+.btn-large {
+    background-color: #3A96DD;
 }
