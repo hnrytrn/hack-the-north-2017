@@ -1,0 +1,17 @@
+#header{
+    height: 100%;
+    width: 100%;
+    color: #673AB7;
+    line-height: 400%;
+    text-align: center;
+}
+.flow-text{
+    color:#0B1222;
+    text-align: center;
+}
+
+#logo{
+    display:block;
+    margin:auto;
+    margin-top: 5px;    
+}

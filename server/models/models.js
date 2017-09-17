@@ -11,7 +11,10 @@ var userSchema = new mongoose.Schema({
     weight: Number,
     totalCalories: Number,
     remainingCalories: Number,
-    recipes: [String]
+    weight: Number,
+    height: Number,
+    age: Number,
+    Activity: Number
 });
 
 mongoose.model('User', userSchema);
