@@ -16,7 +16,7 @@ export class SignInComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) { }
-  
+
   ngOnInit() {
   }
 
@@ -33,5 +33,4 @@ export class SignInComponent implements OnInit {
         }
       )
   }
-  
 }
