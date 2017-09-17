@@ -12,8 +12,8 @@ var userSchema = new mongoose.Schema({
     totalCalories: Number,
     remainingCalories: Number,
     weight: Number,
-    height: Number,
-    age: Number,
+    height: {type: Number, default: 80.7},
+    age: {type: Number, default: 37},
     Activity: Number
 });
 
