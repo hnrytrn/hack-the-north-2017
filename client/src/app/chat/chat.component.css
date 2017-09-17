@@ -1,0 +1,161 @@
+.inbox-title {
+    display: inline-block;
+}
+
+.message-thread {
+    height: 25em;
+}
+
+.message-input {
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.message-input {
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.message-input {
+    outline: none;
+}
+
+.message-box * {
+    width: 100%;
+}
+
+.profile-img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.threads-container {
+    overflow: scroll;
+    height: 40em;
+    display: block;
+}
+
+.module {
+  width: 350px;
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+
+.discussion {
+  overflow:hidden; 
+  overflow-y:scroll;
+  height: 500px;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 50px 0; 
+  li {
+    padding: 0.5rem;
+    overflow: hidden;
+    display: flex;
+  }
+  .avatar {
+    padding: 5px;
+    width: 40px; 
+    position: relative;
+    img {
+      display: block; // triangle position
+      width: 100%;
+    }
+  }
+}
+
+.other {
+  .avatar {
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border: 5px solid #e5e5e5;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+.self {
+  justify-content: flex-end;
+  align-items: flex-end;
+  .messages {
+    order: 1;
+    border-bottom-right-radius: 0; // weird shadow fix
+    background: #6AB4E9;
+    color: white;
+   
+    .time {
+      color: white;
+    }
+  }
+  .avatar {
+    order: 2;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border: 5px solid #6AB4E9;
+      border-right-color: transparent;
+      border-top-color: transparent;
+    }
+  }
+}
+
+.messages {
+  background: #e5e5e5;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(black, 0.2);
+  p {
+    font-size: 0.8rem;
+    margin: 0 0 0.2rem 0;
+  }
+  .time {
+    font-size: 0.6rem;
+    color: #b7b7b7;
+  }
+}
+
+.vertical-line {
+  border-left: thin solid #D0D0D0;
+}
+
+.inbox-col {
+  padding: 0;
+}
+
+.thread-item {
+  width: 500px;
+}
+
+.thread-item:hover, .selected {
+  background-color: #F2F2F2;
+}
+
+.avatar-img {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.inbox-header {
+  text-align: center;
+}
+
+.no-msg-container {
+  height: 400px;
+}

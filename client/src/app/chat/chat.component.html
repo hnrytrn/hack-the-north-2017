@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+
+
+    <table class="bordered">
+      <thead>
+        <tr>
+          <th class="inbox-header">
+            <h5 class="inbox-title">AI Nutritionist</h5>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="message-thread">
+            <ol #discussion class="discussion">
+              <ng-container *ngFor="let message of messages">
+                <li *ngIf="message.user == currentUser;else otherUser" class="self">
+                  <div class="avatar">
+                    <img class="avatar-img" src="{{userProfileMap[message.user].user_img_url}}" alt="userProfile">
+                  </div>
+                  <div class="messages">
+                    <p>{{message.message}}</p>
+                    <!-- <p class="time">{{message.date_created | date:'short'}}</p> -->
+                  </div>
+                </li>
+                <ng-template #otherUser>
+                  <li class="other">
+                    <div class="avatar">
+                      <a routerLink="/profile/{{recipient(selectedThreadNdx).user}}"><img class="avatar-img" src="{{userProfileMap[message.user].user_img_url}}" alt="userProfile"></a>
+                    </div>
+                    <div class="messages">
+                      <p>{{message.message}}</p>
+                      <!-- <p class="time">{{message.date_created | date:'short'}}</p> -->
+                    </div>
+                  </li>
+                </ng-template>
+              </ng-container>
+
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td class="message-box">
+            <input class="browser-default message-input" type="text" placeholder="Type a message" (keydown.enter)="sendMessage()" [(ngModel)]="message.message">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>

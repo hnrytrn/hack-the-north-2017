@@ -8,6 +8,7 @@ var request = require('request');
 // Used for the recipe API
 const APP_ID = "f6c0736d";
 const APP_KEY = "640e60b4821cfee24b35ab6743008a97";
+const EDAMAM_URL = "https://api.edamam.com/search?";
 
 router.route('/user')
     // Create new user
@@ -43,6 +44,7 @@ router.route('/login')
     });
 
 router.route('/meal')
+    // Fetch a meal based on the user's nutrition profile
     .post(function(req, res) {
         let ingredient = req.body.ingredients;
         User.findById(req.body.userId, function(err, user) {
@@ -51,7 +53,7 @@ router.route('/meal')
             }
 
             request.get(
-                'https://api.edamam.com/search?q=' + ingredient + '&app_id=' + APP_ID + '&app_key=' + APP_KEY 
+                EDAMAM_URL + 'q=' + ingredient + '&app_id=' + APP_ID + '&app_key=' + APP_KEY 
                 + '&calories=lte%20' + user.remainingCalories + '&to=1',
                 function (error, response, body) {
                     if (!error && response.statusCode == 200) {
@@ -65,5 +67,15 @@ router.route('/meal')
             );
         });
     });
+
+// Update user's nutrition profile based on the user's goals and body stats
+router.route('/user/:id/nutrition')
+    .put(function(req, res) {
+        User.findById(req.params.id, function(err, user) {
+            if (err) response.send(err);
+            // Use the Harris-Benedict equation to calculate user's BMR and caloric req
+            return res.json({User: user});
+        })
+    })
 
 module.exports = router;
